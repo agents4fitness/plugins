@@ -12,6 +12,10 @@ metadata:
 Two steps: say **who** the clients are, then give **each one their plan**. A client doesn't have to have joined
 yet: a plan set for an invited client is waiting for them the moment they join.
 
+**First check your tools.** This needs `coach_add_clients` and `coach_set_client_plan`. If either is missing
+from your Agents4 Fitness tools, tell the coach that bringing clients over isn't available on their connection
+yet, and stop. Don't use another invitation or plan tool in their place: they don't do the same job.
+
 ## 1. Who they are
 
 1. Read the coach's list (spreadsheet, export, pasted text, screenshot). For each client take the name and
