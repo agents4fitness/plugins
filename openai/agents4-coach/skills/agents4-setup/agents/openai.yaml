@@ -1,0 +1,6 @@
+interface:
+  display_name: "Set up Agents4 Fitness"
+  short_description: "Connect your coaching account and see what you can ask"
+  icon_small: "./assets/agents4-fitness-small.svg"
+  icon_large: "./assets/agents4-fitness.png"
+  default_prompt: "Check my Agents4 Fitness connection and tell me what you can do."

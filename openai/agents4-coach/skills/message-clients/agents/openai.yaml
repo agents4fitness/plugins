@@ -1,0 +1,6 @@
+interface:
+  display_name: "Message clients"
+  short_description: "Send a message to one client or a group"
+  icon_small: "./assets/agents4-fitness-small.svg"
+  icon_large: "./assets/agents4-fitness.png"
+  default_prompt: "Remind everyone on my program that check-ins are due Sunday night."

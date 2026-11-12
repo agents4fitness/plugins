@@ -1,0 +1,6 @@
+interface:
+  display_name: "Client review"
+  short_description: "Everything about one client: workouts, nutrition, check-ins"
+  icon_small: "./assets/agents4-fitness-small.svg"
+  icon_large: "./assets/agents4-fitness.png"
+  default_prompt: "What's going on with Sarah? Is she hitting her protein?"

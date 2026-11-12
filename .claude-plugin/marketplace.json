@@ -1,0 +1,18 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "agents4-fitness",
+  "description": "Agents4 Fitness plugins for coaches.",
+  "owner": {
+    "name": "Agents4 Fitness",
+    "email": "support@agents4.com"
+  },
+  "plugins": [
+    {
+      "name": "agents4-coach",
+      "description": "Run your Agents4 Fitness coaching business from Claude: weekly client reviews, one-client deep dives, workout and nutrition changes for one client or many, messages to clients, and your coaching agent built from your own plan.",
+      "category": "productivity",
+      "source": "./claude/agents4-coach",
+      "homepage": "https://agents4fitness.com"
+    }
+  ]
+}

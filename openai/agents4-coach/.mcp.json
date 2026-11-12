@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "agents4": {
+      "type": "http",
+      "url": "https://api.agents4.com/mcp/http?profile=coach-compact",
+      "oauth_resource": "https://api.agents4.com/mcp/http"
+    }
+  }
+}

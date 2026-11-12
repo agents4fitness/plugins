@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="239.8 -9.3 1087.5 1087.5" role="img" aria-labelledby="a4f-t a4f-d">
+  <title id="a4f-t">Agents4Fitness</title>
+  <desc id="a4f-d">An arrowhead peak holding a constellation and a heartbeat trace, above the wordmark AGENTS4 FITNESS and the line Intelligent Peak Performance.</desc>
+
+  <defs>
+    <linearGradient id="a4f-metal" gradientUnits="userSpaceOnUse" x1="700" y1="330" x2="1430" y2="1230">
+      <stop offset="0"    stop-color="#9CC0C1"/>
+      <stop offset="0.14" stop-color="#57AE9B"/>
+      <stop offset="0.34" stop-color="#2C8271"/>
+      <stop offset="0.58" stop-color="#1E5C54"/>
+      <stop offset="0.82" stop-color="#164440"/>
+      <stop offset="1"    stop-color="#113633"/>
+    </linearGradient>
+    <linearGradient id="a4f-web" gradientUnits="userSpaceOnUse" x1="760" y1="420" x2="1360" y2="1080">
+      <stop offset="0"   stop-color="#4E9F8C"/>
+      <stop offset="0.5" stop-color="#2A7362"/>
+      <stop offset="1"   stop-color="#143E3A"/>
+    </linearGradient>
+    <radialGradient id="a4f-glow" gradientUnits="userSpaceOnUse" cx="995" cy="880" r="250">
+      <stop offset="0"    stop-color="#5FEDD3" stop-opacity="0.62"/>
+      <stop offset="0.45" stop-color="#5FEDD3" stop-opacity="0.24"/>
+      <stop offset="1"    stop-color="#5FEDD3" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <g transform="translate(-286.5 -222)">
+
+    <g id="a4f-mark">
+      <circle cx="995" cy="880" r="250" fill="url(#a4f-glow)"/>
+
+      <g transform="translate(457 163)">
+        <g stroke="url(#a4f-web)" fill="url(#a4f-web)">
+          <path d="M612 322L530 427 M612 322L538 349 M612 322L688 349 M612 322L579 280 M612 322L647 280 M530 427L489 486 M530 427L711 498 M530 427L538 349 M530 427L477 453 M530 427L688 349 M489 486L711 498 M489 486L536 707 M489 486L477 453 M489 486L416 557 M711 498L709 608 M711 498L688 349 M711 498L749 453 M711 498L810 557 M359 563L477 453 M359 563L416 557 M359 563L355 661 M359 563L300 754 M709 608L792 610 M709 608L808 659 M709 608L536 707 M709 608L699 721 M709 608L810 557 M792 610L808 659 M792 610L810 557 M792 610L871 661 M808 659L699 721 M808 659L872 751 M808 659L871 661 M808 659L851 800 M536 707L699 721 M536 707L495 760 M536 707L416 557 M536 707L355 661 M536 707L511 800 M699 721L511 800 M699 721L715 800 M699 721L851 800 M346 743L495 760 M346 743L355 661 M346 743L300 754 M346 743L375 800 M872 751L871 661 M872 751L926 754 M872 751L851 800 M495 760L355 661 M495 760L375 800 M495 760L511 800 M408 893L300 754 M408 893L375 800 M408 893L511 800" fill="none" stroke-width="10" stroke-linecap="round"/>
+        <circle cx="612" cy="322" r="12"/>
+        <circle cx="530" cy="427" r="7"/>
+        <circle cx="489" cy="486" r="11"/>
+        <circle cx="711" cy="498" r="12"/>
+        <circle cx="359" cy="563" r="7"/>
+        <circle cx="709" cy="608" r="16"/>
+        <circle cx="792" cy="610" r="12"/>
+        <circle cx="808" cy="659" r="11"/>
+        <circle cx="536" cy="707" r="12"/>
+        <circle cx="699" cy="721" r="10"/>
+        <circle cx="346" cy="743" r="13"/>
+        <circle cx="872" cy="751" r="13"/>
+        <circle cx="495" cy="760" r="12"/>
+        <circle cx="408" cy="893" r="8"/>
+        </g>
+        <g fill="url(#a4f-metal)">
+          <path fill-rule="evenodd" d="M613,115L1046,853L180,853 Z M613,222L953,800L273,800 Z"/>
+          <polygon points="600,395 652,458 565,555 372,890 643,890 643,1072 565,1072 565,950 278,950"/>
+          <polyline points="557,853 611,617 694,981 765,730 806,853" fill="none" stroke="url(#a4f-metal)"
+                    stroke-width="45" stroke-linejoin="miter" stroke-miterlimit="10"/>
+        </g>
+      </g>
+    </g>
+
+    
+
+  </g>
+</svg>

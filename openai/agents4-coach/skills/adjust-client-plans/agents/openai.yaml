@@ -1,0 +1,6 @@
+interface:
+  display_name: "Adjust client plans"
+  short_description: "Change workouts or nutrition for one client, a group or everyone"
+  icon_small: "./assets/agents4-fitness-small.svg"
+  icon_large: "./assets/agents4-fitness.png"
+  default_prompt: "Swap back squats for leg press for Jamal for the next two weeks."

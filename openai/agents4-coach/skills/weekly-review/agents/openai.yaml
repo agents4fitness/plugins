@@ -1,0 +1,6 @@
+interface:
+  display_name: "Weekly client review"
+  short_description: "Headline numbers, wins and who to check on"
+  icon_small: "./assets/agents4-fitness-small.svg"
+  icon_large: "./assets/agents4-fitness.png"
+  default_prompt: "How did my clients do this week? Who should I check on?"

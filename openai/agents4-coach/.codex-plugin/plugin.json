@@ -1,0 +1,49 @@
+{
+  "name": "agents4-coach",
+  "version": "1.0.0",
+  "description": "Run your Agents4 Fitness coaching business from Codex and ChatGPT: weekly client reviews, one-client deep dives, workout and nutrition changes for one client or many, messages to clients, and your coaching agent built from your own plan.",
+  "author": {
+    "name": "Agents4 Fitness",
+    "email": "support@agents4.com",
+    "url": "https://agents4fitness.com"
+  },
+  "homepage": "https://agents4fitness.com",
+  "license": "UNLICENSED",
+  "keywords": [
+    "agents4-fitness",
+    "fitness",
+    "coaching",
+    "personal-training",
+    "nutrition",
+    "clients",
+    "mcp"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Agents4 Fitness Coach",
+    "shortDescription": "Review clients, change their plans and build your coaching agent",
+    "longDescription": "Connect your Agents4 Fitness coaching account. Ask how your clients did this week, dig into one client, change workouts and nutrition for one client, a group or everyone on your program, message clients, and turn your own plan (PDF, spreadsheet, doc) into the AI coaching agent your clients chat with. Needs an Agents4 Fitness coach account on the Architect plan.",
+    "developerName": "Agents4 Fitness",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://agents4fitness.com",
+    "privacyPolicyURL": "https://agents4fitness.com/privacy",
+    "termsOfServiceURL": "https://agents4fitness.com/terms",
+    "defaultPrompt": [
+      "How did my clients do this week? Who should I check on?",
+      "Build my coaching agent from this plan",
+      "Drop rest-day carbs by 20 g for my fat-loss group from now on"
+    ],
+    "composerIcon": "./assets/agents4-fitness-small.svg",
+    "logo": "./assets/agents4-fitness.png",
+    "logoDark": "./assets/agents4-fitness-dark.png",
+    "screenshots": [],
+    "brandColor": "#2C8271",
+    "brandColorDark": "#57AE9B"
+  }
+}

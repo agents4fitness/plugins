@@ -1,0 +1,20 @@
+{
+  "name": "agents4-fitness",
+  "interface": {
+    "displayName": "Agents4 Fitness"
+  },
+  "plugins": [
+    {
+      "name": "agents4-coach",
+      "source": {
+        "source": "local",
+        "path": "./openai/agents4-coach"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

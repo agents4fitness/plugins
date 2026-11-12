@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "agents4": {
+      "type": "http",
+      "url": "${AGENTS4_MCP_URL:-https://api.agents4.com/mcp/claude}",
+      "headers": {
+        "X-Agents4-Key": "${AGENTS4_API_KEY:-}"
+      }
+    }
+  }
+}

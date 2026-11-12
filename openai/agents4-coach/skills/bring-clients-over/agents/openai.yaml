@@ -1,0 +1,6 @@
+interface:
+  display_name: "Bring clients over"
+  short_description: "Move your clients and their plans over from another app"
+  icon_small: "./assets/agents4-fitness-small.svg"
+  icon_large: "./assets/agents4-fitness.png"
+  default_prompt: "Bring my clients over from this spreadsheet and set up each one's current plan."

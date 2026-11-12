@@ -1,0 +1,6 @@
+interface:
+  display_name: "Build agent from plan"
+  short_description: "Turn your own program into your AI coaching agent"
+  icon_small: "./assets/agents4-fitness-small.svg"
+  icon_large: "./assets/agents4-fitness.png"
+  default_prompt: "Build my coaching agent from this plan, exactly as written."
