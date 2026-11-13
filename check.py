@@ -157,6 +157,14 @@ def offline():
     print("docs")
     docs(pages, c_market, c_plugin, o_mcp)
 
+    print("files")
+    skip = {".git", "__pycache__"}
+    texts = [p for p in ROOT.rglob("*") if p.is_file() and not skip & set(p.relative_to(ROOT).parts) and p.suffix != ".png"]
+    crlf = [p.relative_to(ROOT).as_posix() for p in texts if b"\r\n" in p.read_bytes()]
+    check(not crlf, f"text files use LF line endings ({len(crlf)} with CRLF{': ' + ', '.join(crlf[:4]) if crlf else ''})")
+    check((ROOT / ".gitattributes").is_file() and "eol=lf" in (ROOT / ".gitattributes").read_text(encoding="utf-8"),
+          ".gitattributes keeps LF on every system")
+
     claude = os.environ.get("CLAUDE_BIN") or shutil.which("claude")
     if claude:
         for target in (ROOT, CLAUDE):

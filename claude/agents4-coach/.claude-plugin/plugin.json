@@ -1,7 +1,7 @@
 {
   "name": "agents4-coach",
   "displayName": "Agents4 Fitness Coach",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Run your Agents4 Fitness coaching business from Claude: weekly client reviews, one-client deep dives, workout and nutrition changes for one client or many, messages to clients, and your coaching agent built from your own plan.",
   "author": {
     "name": "Agents4 Fitness",

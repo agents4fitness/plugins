@@ -1,0 +1,4 @@
+# Every text file in this folder is stored and checked out with LF line endings, on every system.
+# (Skills and manifests are read by tools on macOS, Linux and Windows; build.py compares bytes.)
+* text=auto eol=lf
+*.png binary
