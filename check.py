@@ -38,6 +38,76 @@ def bare_brand(text):
     return re.findall(r"(?<![\w/@.-])Agents4(?![\w-]|\s+Fitness)", text)
 
 
+def docs_pages():
+    """The pages a visitor reads: README, docs/ and the examples (not the generated plugin folders)."""
+    paths = [ROOT / "README.md", *sorted((ROOT / "docs").glob("*.md")), *sorted((ROOT / "examples").rglob("*.md"))]
+    return {p: p.read_text(encoding="utf-8") for p in paths}
+
+
+def anchor(heading):
+    """GitHub's anchor for a heading."""
+    text = re.sub(r"[`*_]", "", heading.strip().lower())
+    return re.sub(r"\s", "-", re.sub(r"[^\w\s-]", "", text))
+
+
+def docs(pages, c_market, c_plugin, o_mcp):
+    anchors = {p: {anchor(h) for h in re.findall(r"^#{1,6}\s+(.+)$", re.sub(r"```.*?```", "", t, flags=re.S), re.M)}
+               for p, t in pages.items()}
+    broken = []
+    for page, text in pages.items():
+        for target in re.findall(r"\]\(([^)\s]+)\)", re.sub(r"```.*?```", "", text, flags=re.S)):
+            if re.match(r"[a-z]+:", target):
+                continue  # http(s):, mailto:
+            path, _, frag = target.partition("#")
+            dest = (page.parent / path).resolve() if path else page
+            if not dest.exists():
+                broken.append(f"{page.name} -> {target}")
+            elif frag and dest.suffix == ".md" and frag not in anchors.get(dest, set()):
+                broken.append(f"{page.name} -> {target} (no such heading)")
+    check(not broken, f"links between the pages resolve ({len(broken)} broken{': ' + '; '.join(broken[:4]) if broken else ''})")
+
+    bad_blocks = []
+    for page, text in pages.items():
+        for lang, body in re.findall(r"```(\w+)\n(.*?)```", text, flags=re.S):
+            try:
+                if lang == "json":
+                    json.loads(body)
+                elif lang == "python":
+                    compile(body, f"{page.name} example", "exec")
+            except (ValueError, SyntaxError) as exc:
+                bad_blocks.append(f"{page.name} {lang}: {exc}")
+    check(not bad_blocks, f"json and python examples in the pages parse ({len(bad_blocks)} bad{': ' + '; '.join(bad_blocks[:3]) if bad_blocks else ''})")
+    for script in sorted((ROOT / "examples").rglob("*.py")):
+        try:
+            compile(script.read_text(encoding="utf-8"), str(script), "exec")
+            ok = True
+        except SyntaxError:
+            ok = False
+        check(ok, f"{script.relative_to(ROOT).as_posix()} compiles")
+
+    readme, skills_page = pages[ROOT / "README.md"], pages.get(ROOT / "docs" / "skills.md", "")
+    names = sorted(p.parent.name for p in (ROOT / "skills").glob("*/SKILL.md"))
+    missing = [n for n in names if f"`{n}`" not in readme or f"## {n}" not in skills_page]
+    check(not missing, f"README and docs/skills.md describe all {len(names)} skills ({'missing: ' + ', '.join(missing) if missing else 'none missing'})")
+
+    everything = "\n".join(pages.values())
+    server = o_mcp["oauth_resource"]
+    install = f"{c_plugin['name']}@{c_market['name']}"
+    check(server in readme and server in pages.get(ROOT / "docs" / "connect.md", ""), f"the pages give the server URL {server}")
+    check(f"claude plugin install {install}" in everything and f"codex plugin add {install}" in everything,
+          f"the install commands name {install}")
+    urls = set(re.findall(r"https://api\.agents4\.com/[\w./?=&-]*", everything))
+    known = {server, server + "?profile=coach-compact", "https://api.agents4.com/mcp/claude", "https://api.agents4.com/mcp/oauth",
+             "https://api.agents4.com/.well-known/oauth-protected-resource"}
+    check(urls <= known, f"no other API address is quoted ({sorted(urls - known) or 'none'})")
+
+    for skill in sorted((ROOT / "examples" / "skills").glob("*/SKILL.md")):
+        head = skill.read_text(encoding="utf-8").split("---\n", 2)[1]
+        fields = dict(line.split(":", 1) for line in head.splitlines() if ":" in line and not line.startswith(" "))
+        check(fields.get("name", "").strip() == skill.parent.name and len(fields.get("description", "").strip()) > 40,
+              f"examples/skills/{skill.parent.name}: name matches the folder, description on one line")
+
+
 def offline():
     print("build")
     check(subprocess.run([sys.executable, str(ROOT / "build.py"), "--check"]).returncode == 0,
@@ -77,11 +147,15 @@ def offline():
 
     print("both")
     check(c_plugin["version"] == o_plugin["version"], f"same version ({c_plugin['version']} / {o_plugin['version']})")
+    pages = docs_pages()
     copy = [c_plugin["description"], c_plugin.get("displayName", ""), c_market["description"], o_plugin["description"],
             *[str(v) for v in ui.values()], *[p.read_text(encoding="utf-8") for p in (ROOT / "skills").glob("*/SKILL.md")],
-            (ROOT / "README.md").read_text(encoding="utf-8")]
+            *pages.values(), *[p.read_text(encoding="utf-8") for p in (ROOT / "examples").rglob("*.py")]]
     offenders = [hit for text in copy for hit in bare_brand(text)]
     check(not offenders, f"copy says 'Agents4 Fitness', never bare 'Agents4' ({len(offenders)} bare)")
+
+    print("docs")
+    docs(pages, c_market, c_plugin, o_mcp)
 
     claude = os.environ.get("CLAUDE_BIN") or shutil.which("claude")
     if claude:
